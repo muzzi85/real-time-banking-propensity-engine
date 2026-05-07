@@ -66,3 +66,19 @@ The system then exposes predictions through production-grade APIs to support:
 - Real-time fraud signals
 - RAG + LLM decisioning
 - Next Best Action engine
+
+
+---
+
+## Engineering Stack
+
+Already looks like a real ML platform environment:
+
+- VSCode
+- WSL
+- Python
+- Git
+- GitHub
+- SSH
+- Docker
+- MLflow-ready architecture
