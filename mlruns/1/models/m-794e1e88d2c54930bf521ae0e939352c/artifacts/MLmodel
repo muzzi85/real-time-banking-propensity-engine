@@ -1,0 +1,23 @@
+artifact_path: /home/muzzi/real-time-banking-propensity-engine/mlruns/1/models/m-794e1e88d2c54930bf521ae0e939352c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-794e1e88d2c54930bf521ae0e939352c
+model_size_bytes: 238127
+model_uuid: m-794e1e88d2c54930bf521ae0e939352c
+prompts: null
+run_id: fde71ee37d15405eaef1bbb4c91749d1
+utc_time_created: '2026-05-07 10:56:47.164978'
