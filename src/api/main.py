@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 
 from pathlib import Path
-
+import shap
 from src.api.schemas import CustomerFeatures
 
 
@@ -15,6 +15,7 @@ from src.api.schemas import CustomerFeatures
 model_path = Path("src/models/artifacts/best_propensity_model.pkl")
 
 model = joblib.load(model_path)
+# explainer = shap.TreeExplainer(model.get_booster())
 
 print("Best propensity model loaded successfully")
 
@@ -83,6 +84,19 @@ def predict(customer: CustomerFeatures):
 
     input_df = pd.DataFrame([customer.dict()])
 
+    # -----------------------------
+    # Feature Importance
+    # -----------------------------
+
+    importance_scores = model.feature_importances_
+
+    feature_importance = {
+        feature: round(float(score), 4)
+        for feature, score in zip(
+            input_df.columns,
+            importance_scores
+        )
+    }
     prediction_probability = model.predict_proba(input_df)[0][1]
 
     prediction = int(prediction_probability > 0.5)
@@ -97,7 +111,7 @@ def predict(customer: CustomerFeatures):
     response = {
         "personal_loan_conversion_probability": round(float(prediction_probability), 4),
         "predicted_conversion": prediction,
-        "next_best_offer": next_best_offer
+        "next_best_offer": next_best_offer,
+        "feature_importance": feature_importance
     }
-
     return response

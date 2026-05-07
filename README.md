@@ -319,4 +319,98 @@ docker run -p 8000:8000 banking-propensity-api
 - RAG-powered customer intelligence
 - LLM-driven recommendation engine
 - Model drift monitoring
-- Kubernetes deployment
+- Kubernetes deployment---
+
+# Example AI Decision Response
+
+Example response from the `/predict` API endpoint:
+
+```json
+{
+  "personal_loan_conversion_probability": 0.3572,
+  "predicted_conversion": 0,
+  "next_best_offer": "Retention Campaign",
+  "feature_importance": {
+    "age": 0.0894,
+    "salary": 0.1194,
+    "account_balance": 0.1019,
+    "avg_card_spend": 0.1025,
+    "tenure_months": 0.0972,
+    "digital_engagement_score": 0.1694,
+    "missed_payments": 0.1412,
+    "is_sme_owner": 0.0838,
+    "international_spend_ratio": 0.0952
+  }
+}
+```
+
+---
+
+# Response Interpretation
+
+## Conversion Probability
+
+```text
+"personal_loan_conversion_probability": 0.3572
+```
+
+The AI model predicts that the customer has approximately a 35.7% probability of converting to the proposed banking product.
+
+---
+
+## Binary Prediction
+
+```text
+"predicted_conversion": 0
+```
+
+The platform applies a decision threshold of 0.5:
+
+- Above 0.5 → likely conversion
+- Below 0.5 → unlikely conversion
+
+Since the probability is below the threshold, the customer is classified as unlikely to convert.
+
+---
+
+## Next Best Offer (NBA)
+
+```text
+"next_best_offer": "Retention Campaign"
+```
+
+Instead of aggressively pushing a new lending product, the decision engine recommends a retention-focused strategy.
+
+Typical retention campaigns in banking may include:
+- loyalty incentives
+- cashback offers
+- fee waivers
+- engagement campaigns
+- account upgrade incentives
+
+This simulates how enterprise banking AI systems combine:
+- machine learning predictions
+- customer segmentation
+- business rules
+- campaign orchestration
+
+to determine the most appropriate customer action.
+
+---
+
+## Feature Importance
+
+The API also returns model explainability information:
+
+```text
+"feature_importance"
+```
+
+This shows which customer features are most influential globally across the trained XGBoost model.
+
+Example:
+- `digital_engagement_score` has strong influence on conversion likelihood
+- `missed_payments` significantly impacts customer scoring
+- `salary` contributes strongly to product propensity
+
+This provides transparency and explainability for AI-driven banking decisions.
