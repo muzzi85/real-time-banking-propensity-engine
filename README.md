@@ -81,4 +81,242 @@ Already looks like a real ML platform environment:
 - GitHub
 - SSH
 - Docker
-- MLflow-ready architecture
+- MLflow-ready architecture---
+
+# Banking AI Propensity & Next Best Offer Platform
+
+Production-style AI banking platform for customer propensity modeling and Next Best Offer (NBA) decisioning.
+
+The platform simulates how enterprise banking AI systems:
+- train propensity models,
+- optimize experiments,
+- track ML lifecycle,
+- serve real-time predictions,
+- orchestrate personalized offers.
+
+---
+
+# Business Use Cases
+
+The platform predicts and serves:
+
+- Personal loan conversion
+- FX credit card propensity
+- Premium banking upgrades
+- Customer retention campaigns
+- SME lending opportunities
+
+---
+
+# Platform Architecture
+
+```text
+Synthetic Banking Data
+        ↓
+ML Training Pipeline
+        ↓
+Optuna Hyperparameter Optimization
+        ↓
+MLflow Experiment Tracking
+        ↓
+Best Model Artifact
+        ↓
+FastAPI Inference API
+        ↓
+Next Best Offer Decision Engine
+        ↓
+Containerized Docker Service
+```
+
+---
+
+# Engineering Stack
+
+- Python
+- FastAPI
+- XGBoost
+- Optuna
+- MLflow
+- Pandas
+- Scikit-learn
+- Docker
+- GitHub
+- WSL
+- VSCode
+
+---
+
+# Core Components
+
+## 1. Synthetic Banking Data Generation
+
+Creates realistic synthetic banking customers with:
+- salaries
+- balances
+- engagement signals
+- SME ownership
+- spending behaviour
+- churn indicators
+
+---
+
+## 2. Propensity Modeling
+
+Trains XGBoost models for:
+- loan conversion prediction
+- customer targeting
+- NBA scoring
+
+Includes:
+- train/test pipelines
+- evaluation metrics
+- ROC-AUC optimization
+
+---
+
+## 3. Hyperparameter Optimization
+
+Uses Optuna for:
+- intelligent parameter search
+- automated experimentation
+- model performance optimization
+
+---
+
+## 4. MLflow Experiment Tracking
+
+Tracks:
+- model parameters
+- metrics
+- artifacts
+- experiment lineage
+
+---
+
+## 5. FastAPI Inference Service
+
+Production-style REST API for:
+- real-time predictions
+- schema validation
+- Swagger documentation
+- live scoring
+
+Endpoints:
+- `/health`
+- `/predict`
+
+---
+
+## 6. Next Best Offer (NBA) Engine
+
+Business rules layer that converts ML predictions into:
+- personalized banking offers
+- retention campaigns
+- premium upgrade recommendations
+- SME lending actions
+
+---
+
+## 7. Dockerized Deployment
+
+Containerized deployment-ready inference service using Docker.
+
+---
+
+# Example Prediction Request
+
+```json
+{
+  "age": 35,
+  "salary": 25000,
+  "account_balance": 120000,
+  "avg_card_spend": 8000,
+  "tenure_months": 48,
+  "digital_engagement_score": 82,
+  "missed_payments": 0,
+  "is_sme_owner": 1,
+  "international_spend_ratio": 0.7
+}
+```
+
+---
+
+# Example Prediction Response
+
+```json
+{
+  "personal_loan_conversion_probability": 0.8421,
+  "predicted_conversion": 1,
+  "next_best_offer": "Premium SME Loan Package"
+}
+```
+
+---
+
+# Run Locally
+
+## Create virtual environment
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Generate synthetic data
+
+```bash
+python src/pipelines/generate_synthetic_data.py
+```
+
+## Train optimized model
+
+```bash
+python src/pipelines/train_optuna_propensity_model.py
+```
+
+## Run FastAPI service
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+## Open Swagger UI
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# Run With Docker
+
+## Build container
+
+```bash
+docker build -t banking-propensity-api .
+```
+
+## Run container
+
+```bash
+docker run -p 8000:8000 banking-propensity-api
+```
+
+---
+
+# Future Extensions
+
+- Kafka streaming inference
+- Real-time feature store
+- Snowflake integration
+- Databricks pipelines
+- RAG-powered customer intelligence
+- LLM-driven recommendation engine
+- Model drift monitoring
+- Kubernetes deployment
